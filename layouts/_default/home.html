@@ -1,4 +1,112 @@
 {{ define "main" }}
-    <h1>Welcome to my Portfolio</h1>
-    <p>This site is currently under construction.</p>
+
+{{ $landscapes := slice }}
+{{ range (where .Site.RegularPages "Section" "projects") }}
+    {{ range .Resources.ByType "image" }}
+        {{ if gt .Width .Height }}
+            {{ $landscapes = $landscapes | append . }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{ $slideshow := first 10 (shuffle $landscapes) }}
+
+<style>
+    .hero-container {
+        height: calc(100vh - 70px);
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        background-color: var(--bg-dark);
+    }
+
+    /* OVERLAY: Slightly darker to ensure name is readable */
+    .hero-overlay {
+        position: absolute;
+        z-index: 10;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(15, 18, 22, 0.3); 
+    }
+
+    /* THE SLIDESHOW IMAGES */
+    .hero-bg {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-size: cover;
+        background-position: center;
+        
+        opacity: 0; /* Hidden */
+        /* JUST OPACITY - No movement */
+        transition: opacity 3s ease-in-out; 
+        z-index: 1;
+    }
+
+    .hero-bg.active {
+        opacity: 1; /* Visible */
+    }
+
+    /* TEXT CONTENT */
+    .hero-content {
+        position: relative;
+        z-index: 20;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--text-main);
+        pointer-events: none; /* Let clicks pass through to the image if needed */
+    }
+
+    h1 {
+        font-size: 4rem; /* Big and decisive */
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin: 0; /* No margin needed since it's alone */
+        text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        
+        opacity: 0;
+        animation: fadeUp 1.5s forwards 0.5s;
+    }
+
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<div class="hero-container">
+    
+    {{ range $index, $img := $slideshow }}
+        {{ $resized := $img.Resize "2000x" }} 
+        <div class="hero-bg {{ if eq $index 0 }}active{{ end }}" 
+             style="background-image: url('{{ $resized.RelPermalink }}');">
+        </div>
+    {{ end }}
+
+    <div class="hero-overlay"></div>
+    
+    <div class="hero-content">
+        <h1>Alex Walker</h1>
+    </div>
+
+</div>
+
+<script>
+    const slides = document.querySelectorAll('.hero-bg');
+    let currentSlide = 0;
+    const slideInterval = 6000; // 6 seconds static, 3 seconds fade
+
+    function nextSlide() {
+        if (slides.length < 2) return;
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+
+    setInterval(nextSlide, slideInterval);
+</script>
+
 {{ end }}

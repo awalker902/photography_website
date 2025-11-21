@@ -1,60 +1,325 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta name="generator" content="Hugo 0.152.2"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
     <style>
+         
+        :root {
+             
+            --bg-dark: #0f1216;        
+            --bg-panel: #161b22;       
+            --bg-stage: #0a0c0f;       
+            
+             
+            --text-main: #e6edf3;      
+            --text-muted: #8b949e;     
+            
+             
+            --accent: #3fb950;         
+            --accent-blue: #2f81f7;    
+            
+            --border: #30363d;         
+        }
+
         body { 
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+            font-family: 'Bitter', serif;  
             margin: 0; 
-            color: #333;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
         }
         
          
         nav { 
-            padding: 1.5rem 2.5rem;  
-            border-bottom: 1px solid #f0f0f0; 
+            padding: 1.5rem 2.5rem;
+            border-bottom: 1px solid var(--border); 
             display: flex;
-            gap: 20px;
+            gap: 30px;
+            background-color: var(--bg-dark);
         }
         
         nav a {
             text-decoration: none;
-            color: #000;
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            font-size: 0.85rem;
+            font-weight: 700;  
+            transition: color 0.2s;
         }
 
-        nav a:hover { color: #888; }
-
+        nav a:hover { color: var(--text-main); }
+        
          
         footer {
             padding: 1.5rem 2.5rem;
-            font-size: 0.75rem;
-            color: #999;
-            border-top: 1px solid #f0f0f0;
-            text-align: right;  
+            font-size: 0.8rem;
+            color: var(--border);  
+            border-top: 1px solid var(--border);
+            text-align: right;
+            background-color: var(--bg-dark);
         }
+
+         
+        a { color: var(--text-main); }
     </style>
 </head>
 <body>
     
     <nav>
-        <a href="/" style="font-weight: bold;">My Photography</a>
+        <a href="/" style="color: var(--text-main);">Alex Walker</a>
         <a href="/projects">Projects</a>
+        <a href="/about">About</a>
     </nav>
 
     <main>
         
-    <h1>Welcome to my Portfolio</h1>
-    <p>This site is currently under construction.</p>
+
+
+
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+    
+        
+            
+        
+    
+        
+    
+
+
+
+
+<style>
+    .hero-container {
+        height: calc(100vh - 70px);
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        background-color: var(--bg-dark);
+    }
+
+     
+    .hero-overlay {
+        position: absolute;
+        z-index: 10;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(15, 18, 22, 0.3); 
+    }
+
+     
+    .hero-bg {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-size: cover;
+        background-position: center;
+        
+        opacity: 0;  
+         
+        transition: opacity 3s ease-in-out; 
+        z-index: 1;
+    }
+
+    .hero-bg.active {
+        opacity: 1;  
+    }
+
+     
+    .hero-content {
+        position: relative;
+        z-index: 20;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--text-main);
+        pointer-events: none;  
+    }
+
+    h1 {
+        font-size: 4rem;  
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin: 0;  
+        text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        
+        opacity: 0;
+        animation: fadeUp 1.5s forwards 0.5s;
+    }
+
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<div class="hero-container">
+    
+    
+         
+        <div class="hero-bg active" 
+             style="background-image: url('/projects/eastern-americana/DSC04215-Edit_hu_75d3084bef4f568d.jpg');">
+        </div>
+    
+         
+        <div class="hero-bg " 
+             style="background-image: url('/projects/eastern-americana/DSC03302_hu_98a4df4de8e75b2d.jpg');">
+        </div>
+    
+         
+        <div class="hero-bg " 
+             style="background-image: url('/projects/eastern-americana/DSC01633-Edit_hu_b94fac96dd8e4214.jpg');">
+        </div>
+    
+         
+        <div class="hero-bg " 
+             style="background-image: url('/projects/eastern-americana/DSC02612_hu_3fe689e463a0c8bd.jpg');">
+        </div>
+    
+         
+        <div class="hero-bg " 
+             style="background-image: url('/projects/eastern-americana/TMX57_Sep24_11-positive-Edit_hu_1953c216faef071b.jpg');">
+        </div>
+    
+         
+        <div class="hero-bg " 
+             style="background-image: url('/projects/eastern-americana/DSC02016-positive_hu_63f3040a30b951af.jpg');">
+        </div>
+    
+         
+        <div class="hero-bg " 
+             style="background-image: url('/projects/eastern-americana/DSC00448_hu_1d20b7309f8d09d1.jpg');">
+        </div>
+    
+         
+        <div class="hero-bg " 
+             style="background-image: url('/projects/eastern-americana/DSC03938-Edit_hu_f93bd7244cd4f279.jpg');">
+        </div>
+    
+         
+        <div class="hero-bg " 
+             style="background-image: url('/projects/eastern-americana/F10057_4-Edit_hu_81d8a4c5b8ae8534.jpg');">
+        </div>
+    
+         
+        <div class="hero-bg " 
+             style="background-image: url('/projects/eastern-americana/DSC02421-positive_hu_da5254fa4113ad59.jpg');">
+        </div>
+    
+
+    <div class="hero-overlay"></div>
+    
+    <div class="hero-content">
+        <h1>Alex Walker</h1>
+    </div>
+
+</div>
+
+<script>
+    const slides = document.querySelectorAll('.hero-bg');
+    let currentSlide = 0;
+    const slideInterval = 6000; 
+
+    function nextSlide() {
+        if (slides.length < 2) return;
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+
+    setInterval(nextSlide, slideInterval);
+</script>
+
 
     </main>
 
     <footer>
-        <p>&copy; 2025 My Photography</p>
+        <p>&copy; 2025 Alex Walker</p>
     </footer>
 
 </body>

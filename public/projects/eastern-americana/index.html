@@ -1,48 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Eastern Americana</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
     <style>
+         
+        :root {
+             
+            --bg-dark: #0f1216;        
+            --bg-panel: #161b22;       
+            --bg-stage: #0a0c0f;       
+            
+             
+            --text-main: #e6edf3;      
+            --text-muted: #8b949e;     
+            
+             
+            --accent: #3fb950;         
+            --accent-blue: #2f81f7;    
+            
+            --border: #30363d;         
+        }
+
         body { 
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+            font-family: 'Bitter', serif;  
             margin: 0; 
-            color: #333;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
         }
         
          
         nav { 
-            padding: 1.5rem 2.5rem;  
-            border-bottom: 1px solid #f0f0f0; 
+            padding: 1.5rem 2.5rem;
+            border-bottom: 1px solid var(--border); 
             display: flex;
-            gap: 20px;
+            gap: 30px;
+            background-color: var(--bg-dark);
         }
         
         nav a {
             text-decoration: none;
-            color: #000;
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            font-size: 0.85rem;
+            font-weight: 700;  
+            transition: color 0.2s;
         }
 
-        nav a:hover { color: #888; }
-
+        nav a:hover { color: var(--text-main); }
+        
          
         footer {
             padding: 1.5rem 2.5rem;
-            font-size: 0.75rem;
-            color: #999;
-            border-top: 1px solid #f0f0f0;
-            text-align: right;  
+            font-size: 0.8rem;
+            color: var(--border);  
+            border-top: 1px solid var(--border);
+            text-align: right;
+            background-color: var(--bg-dark);
         }
+
+         
+        a { color: var(--text-main); }
     </style>
 </head>
 <body>
     
     <nav>
-        <a href="/" style="font-weight: bold;">My Photography</a>
+        <a href="/" style="color: var(--text-main);">Alex Walker</a>
         <a href="/projects">Projects</a>
+        <a href="/about">About</a>
     </nav>
 
     <main>
@@ -50,94 +84,191 @@
 
 <style>
      
-     
-    :root {
-        --sidebar-width: 350px;
-    }
-
+    :root { --sidebar-width: 350px; }
+    
     body {
-        margin: 0 !important;  
-        padding: 0 !important;
-        overflow: hidden;  
-        height: 100vh;
-        width: 100vw;
+        margin: 0 !important; padding: 0 !important;
+        overflow: hidden; height: 100vh; width: 100vw;
+        padding-bottom: 20px !important; box-sizing: border-box;
+        background-color: var(--bg-dark);  
     }
 
      
     .project-container {
         display: grid;
         grid-template-columns: var(--sidebar-width) 1fr;
-        
-         
         height: calc(100vh - 160px); 
-        
         width: 100%; 
-        background: white;
+        background: var(--bg-dark);
+        border-top: 1px solid var(--border);
     }
 
      
     .sidebar {
+        position: relative;
+
         padding: 2rem;
-        border-right: 1px solid #eee;
+        border-right: 1px solid var(--border);
         display: flex;
         flex-direction: column;
         justify-content: center;
-        background: #fff;
+        background: var(--bg-panel);  
         overflow-y: auto;
-        box-sizing: border-box;  
+        color: var(--text-main);
     }
 
      
     .stage {
-        background: #f0f0f0;  
+        background: var(--bg-stage);
         position: relative;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;  
+        min-width: 0; min-height: 0;
+        width: 100%; height: 100%;
         
-        display: flex;
-        align-items: center;
+         
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
         justify-content: center;
-        padding: 40px;  
+        
+         
+        padding: 20px; 
         box-sizing: border-box;
     }
 
      
     .slide {
         display: none;
-        
          
-         
-        max-width: 100%;
-        max-height: 100%;
-        width: auto;
-        height: auto;
+        flex: 1; 
+        min-height: 0;  
         
+        max-width: 100%; 
+        width: auto; 
         object-fit: contain;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        
+        box-shadow: 0 0 30px rgba(0,0,0,0.5); 
     }
 
-    .slide.active {
+    .slide.active { display: block; }
+
+     
+    .nav-buttons { margin-top: 2rem; display: flex; gap: 1rem; }
+    
+    button {
+        cursor: pointer;
+        background: transparent;
+        color: var(--text-main);
+        border: 1px solid var(--text-muted);  
+        padding: 12px 24px;
+        font-family: 'Bitter', serif;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        transition: all 0.2s;
+    }
+
+    button:hover { 
+        background: var(--text-main); 
+        color: var(--bg-dark); 
+        border-color: var(--text-main);
+    }
+
+    .counter-display {
+        font-family: monospace;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        letter-spacing: 0.1em;
+        flex-grow: 1; 
+        text-align: center;
+    }
+
+    .caption-display { 
+        margin-top: 1rem; 
+        font-size: 0.9rem; 
+        color: var(--text-muted); 
+        font-style: italic; 
+        min-height: 1.2em; 
+    }
+
+     
+    .stage-caption {
+        margin-top: 15px;
+        color: var(--text-muted);
+        font-family: 'Bitter', serif;
+        font-size: 0.9rem;
+        text-align: center;
+        flex-shrink: 0;  
+        min-height: 1.5em;
+    }
+
+     
+    .project-container.full-mode {
+        grid-template-columns: 0px 1fr;  
+    }
+    
+    .project-container.full-mode .sidebar {
+        padding: 0;  
+        overflow: hidden;
+    }
+
+     
+    .toggle-btn {
+        background: transparent;
+        border: none;
+        color: var(--text-muted);
+        cursor: pointer;
+        font-size: 1.2rem;
+        padding: 5px;
+        transition: color 0.2s;
+    }
+    
+     
+    .close-sidebar {
+        position: absolute;
+        top: 15px;
+        right: 15px;  
+        z-index: 10;
+        
+         
+        background: rgba(0,0,0,0.2);
+        border-radius: 4px;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+    
+    .close-sidebar:hover {
+        background: var(--text-main);
+        color: var(--bg-dark);
+    }
+
+     
+    .open-sidebar {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 100;
+        display: none;  
+        background: rgba(0,0,0,0.5);  
+        padding: 10px;
+        border-radius: 4px;
+    }
+
+    .project-container.full-mode .open-sidebar {
         display: block;
     }
 
      
-    .nav-buttons { margin-top: 2rem; display: flex; gap: 1rem; }
-    button { cursor: pointer; background: black; color: white; border: none; padding: 10px 20px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
-    button:hover { opacity: 0.8; }
-    .caption-display { margin-top: 1rem; font-size: 0.85rem; color: #666; font-style: italic; min-height: 1.2em; }
-
-    @media (max-width: 768px) {
-        .project-container { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
-        .sidebar { height: auto; padding: 1rem; border-bottom: 1px solid #eee; border-right: none; }
-         
-        .stage { height: 50vh; padding: 10px; } 
-    }
 </style>
 
 <div class="project-container">
     
     <aside class="sidebar">
+        <button class="toggle-btn close-sidebar" onclick="toggleSidebar()" title="Hide Sidebar">«</button>
         <h1 style="margin: 0 0 0.5rem 0; font-size: 1.5rem;">Eastern Americana</h1>
         <p style="margin: 0 0 2rem 0; font-size: 0.9rem; color: #888;">Exploring the monumental artifacts of New England&#39;s functional history.</p>
         
@@ -148,11 +279,11 @@
 
         </div>
 
-        <div id="caption-target" class="caption-display">
-            </div>
-
         <div class="nav-buttons">
             <button onclick="changeSlide(-1)">Prev</button>
+            
+            <span id="counter-target" class="counter-display">00 / 00</span>
+            
             <button onclick="changeSlide(1)">Next</button>
         </div>
         
@@ -160,117 +291,267 @@
     </aside>
 
     <main class="stage">
+        <button class="toggle-btn open-sidebar" onclick="toggleSidebar()" title="Show Info">» Info</button>
+
         
             
             
-            
-                
                  
                 
-                <img src="/projects/eastern-americana/DSC04072-Edit_hu_4490ee162c27e5b1.jpg" 
+                <img src="/projects/eastern-americana/F100_Mar25_1_hu_fb9b9fabb6d443d9.jpg" 
                      class="slide active" 
-                     data-title="Factories, Dam, Substation | Bellows Falls, VT"
-                     alt="Factories, Dam, Substation | Bellows Falls, VT">
-            
-
-        
-            
-            
-            
-                
-                 
-                
-                <img src="/projects/eastern-americana/DSC05093-Edit_hu_d21cbab4aec89d4c.jpg" 
-                     class="slide " 
-                     data-title="North Concord Radar Station | East Mountain, VT"
-                     alt="North Concord Radar Station | East Mountain, VT">
-            
-
-        
-            
-            
-            
-                
-                 
-                
-                <img src="/projects/eastern-americana/F100_Mar25_1_hu_69a792fa61b51b1a.jpg" 
-                     class="slide " 
                      data-title="Power Station | Bellows Falls, VT"
                      alt="Power Station | Bellows Falls, VT">
             
-
         
             
             
-            
-                
                  
                 
-                <img src="/projects/eastern-americana/TMX57_Sep24_11-positive-Edit_hu_bd9b31287222fa35.jpg" 
+                <img src="/projects/eastern-americana/F10057_1_hu_7c0b40f3e674dc8c.jpg" 
+                     class="slide " 
+                     data-title="Foundation Under Birch Trunks | Thornton Gore, NH"
+                     alt="Foundation Under Birch Trunks | Thornton Gore, NH">
+            
+        
+            
+            
+                 
+                
+                <img src="/projects/eastern-americana/DSC01281_hu_2e18312c053de041.jpg" 
+                     class="slide " 
+                     data-title="Nashua Mill Building | Nashua, NH"
+                     alt="Nashua Mill Building | Nashua, NH">
+            
+        
+            
+            
+                 
+                
+                <img src="/projects/eastern-americana/TMX57_Sep24_11-positive-Edit_hu_cbf8cc2707250892.jpg" 
                      class="slide " 
                      data-title="Boom Chain | Lake Umbagog, NH"
                      alt="Boom Chain | Lake Umbagog, NH">
             
-
         
             
             
-            
-                
                  
                 
-                <img src="/projects/eastern-americana/TMX57_Yuhas25_3-Edit_hu_bc7078ea82dafe45.jpg" 
+                <img src="/projects/eastern-americana/DSC04215-Edit_hu_2d0fb34cec2824ea.jpg" 
                      class="slide " 
-                     data-title="#2 Yuhas Feldspar Mine | Acworth, NH"
-                     alt="#2 Yuhas Feldspar Mine | Acworth, NH">
+                     data-title="Cribwork | Pemigewasset River, NH"
+                     alt="Cribwork | Pemigewasset River, NH">
             
-
         
             
             
-            
-                
                  
                 
-                <img src="/projects/eastern-americana/F10057_4-Edit_hu_5fd8e164470733d9.jpg" 
+                <img src="/projects/eastern-americana/DSC03302_hu_462397ca36f1f7c5.jpg" 
+                     class="slide " 
+                     data-title="Dover Film Company | Dover, NH"
+                     alt="Dover Film Company | Dover, NH">
+            
+        
+            
+            
+                 
+                
+                <img src="/projects/eastern-americana/DSC03158-positive_hu_a5d33ee3a8915545.jpg" 
+                     class="slide " 
+                     data-title="Fire Control Bunker | Odiorne Point, NH"
+                     alt="Fire Control Bunker | Odiorne Point, NH">
+            
+        
+            
+            
+                 
+                
+                <img src="/projects/eastern-americana/DSC03938-Edit_hu_d8ef329f03e4c0d1.jpg" 
+                     class="slide " 
+                     data-title="Knob and Tube | Vermont"
+                     alt="Knob and Tube | Vermont">
+            
+        
+            
+            
+                 
+                
+                <img src="/projects/eastern-americana/DSC02870-Edit_hu_95a60db81a589a01.jpg" 
+                     class="slide " 
+                     data-title="Harbor Fish Market and Condominiums | Portland, ME"
+                     alt="Harbor Fish Market and Condominiums | Portland, ME">
+            
+        
+            
+            
+                 
+                
+                <img src="/projects/eastern-americana/DSC01633-Edit_hu_a742c8cff1c0e3f8.jpg" 
+                     class="slide " 
+                     data-title="Stone Wall | New Hampshire"
+                     alt="Stone Wall | New Hampshire">
+            
+        
+            
+            
+                 
+                
+                <img src="/projects/eastern-americana/DSC02612_hu_19a3b69019ab407.jpg" 
+                     class="slide " 
+                     data-title="Boiler with Tree | Redstone, NH"
+                     alt="Boiler with Tree | Redstone, NH">
+            
+        
+            
+            
+                 
+                
+                <img src="/projects/eastern-americana/DSC04072-Edit_hu_3db1f6814ca47c75.jpg" 
+                     class="slide " 
+                     data-title="Bellows Falls Power Station | Bellows Falls, VT"
+                     alt="Bellows Falls Power Station | Bellows Falls, VT">
+            
+        
+            
+            
+                 
+                
+                <img src="/projects/eastern-americana/DSC05310-Edit_hu_6198ebe6cbea5871.jpg" 
+                     class="slide " 
+                     data-title="Entrance | Battery Steele, Peaks Island, ME"
+                     alt="Entrance | Battery Steele, Peaks Island, ME">
+            
+        
+            
+            
+                 
+                
+                <img src="/projects/eastern-americana/DSC05093-Edit_hu_3a6a250a4b1b4492.jpg" 
+                     class="slide " 
+                     data-title="North Concord Radar Station | East Mountain, VT"
+                     alt="North Concord Radar Station | East Mountain, VT">
+            
+        
+            
+            
+                 
+                
+                <img src="/projects/eastern-americana/DSC00448_hu_9e72cf353bb5c535.jpg" 
+                     class="slide " 
+                     data-title="Fire Control Tower | Fort Foster, Kittery, ME"
+                     alt="Fire Control Tower | Fort Foster, Kittery, ME">
+            
+        
+            
+            
+                 
+                
+                <img src="/projects/eastern-americana/DSC03991-Edit_hu_9490aed2e7b73463.jpg" 
+                     class="slide " 
+                     data-title="Grist Mill Interior | Vermont"
+                     alt="Grist Mill Interior | Vermont">
+            
+        
+            
+            
+                 
+                
+                <img src="/projects/eastern-americana/F10057_4-Edit_hu_febf9340007ea487.jpg" 
                      class="slide " 
                      data-title="Factory with High Tension Lines | Bellows Falls, VT"
                      alt="Factory with High Tension Lines | Bellows Falls, VT">
             
-
         
             
             
-            
-                
                  
                 
-                <img src="/projects/eastern-americana/F10057_1_hu_874b05c9e79e28c8.jpg" 
+                <img src="/projects/eastern-americana/F10057_3_hu_d483d9383b790c44.jpg" 
                      class="slide " 
-                     data-title="Mill Foundation | Thornton Gore, NH"
-                     alt="Mill Foundation | Thornton Gore, NH">
+                     data-title="Mill Race | Thornton Gore, NH"
+                     alt="Mill Race | Thornton Gore, NH">
             
-
         
+            
+            
+                 
+                
+                <img src="/projects/eastern-americana/DSC02421-positive_hu_1999d3f82ba931b.jpg" 
+                     class="slide " 
+                     data-title="Star Island | Gosport, NH"
+                     alt="Star Island | Gosport, NH">
+            
+        
+            
+            
+                 
+                
+                <img src="/projects/eastern-americana/DSC02016-positive_hu_5d9607c048aa1122.jpg" 
+                     class="slide " 
+                     data-title="Barn with Meter | Berwick, ME"
+                     alt="Barn with Meter | Berwick, ME">
+            
+        
+            
+            
+                 
+                
+                <img src="/projects/eastern-americana/DSC01583_hu_d279d0906eb0505c.jpg" 
+                     class="slide " 
+                     data-title="Explosives Shack | Acworth, NH"
+                     alt="Explosives Shack | Acworth, NH">
+            
+        
+            
+            
+                 
+                
+                <img src="/projects/eastern-americana/TMX57_Yuhas25_3-Edit_hu_319bcd4cae800ba5.jpg" 
+                     class="slide " 
+                     data-title="Yuhas #2 Feldspar Mine | Acworth, NH"
+                     alt="Yuhas #2 Feldspar Mine | Acworth, NH">
+            
+        
+        
+        <div id="caption-target" class="stage-caption"></div>
     </main>
 
 </div>
 
 <script>
     let currentIndex = 0;
-    
     const slides = document.querySelectorAll('.slide');
     const captionTarget = document.getElementById('caption-target');
+    const counterTarget = document.getElementById('counter-target');
+
+    
+    function formatNumber(num) {
+        return num.toString().padStart(2, '0');
+    }
+
+    function updateUI() {
+        
+        if(captionTarget && slides[currentIndex]) {
+            captionTarget.innerText = slides[currentIndex].getAttribute('data-title');
+        }
+        
+        
+        if(counterTarget) {
+            const currentStr = formatNumber(currentIndex + 1);
+            const totalStr = formatNumber(slides.length);
+            counterTarget.innerText = `${currentStr} / ${totalStr}`;
+        }
+    }
 
     
     if(slides.length > 0) {
-        captionTarget.innerText = slides[0].getAttribute('data-title');
+        updateUI();
     }
 
     function changeSlide(direction) {
-        
         slides[currentIndex].classList.remove('active');
-
         
         currentIndex += direction;
 
@@ -278,25 +559,45 @@
         if (currentIndex >= slides.length) currentIndex = 0;
         if (currentIndex < 0) currentIndex = slides.length - 1;
 
-        
         slides[currentIndex].classList.add('active');
         
-        
-        captionTarget.innerText = slides[currentIndex].getAttribute('data-title');
+        updateUI();
     }
-    
     
     document.addEventListener('keydown', function(e) {
         if(e.key === "ArrowRight") changeSlide(1);
         if(e.key === "ArrowLeft") changeSlide(-1);
     });
+
+    function toggleSidebar() {
+        const container = document.querySelector('.project-container');
+        container.classList.toggle('full-mode');
+        
+        
+        window.dispatchEvent(new Event('resize'));
+    }
 </script>
+
+<article style="max-width: 800px; margin: 0 auto; padding: 80px 20px;">
+    
+    <header style="margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 30px;">
+        <h1 style="font-size: 3rem; line-height: 1.1; margin-bottom: 10px;">Eastern Americana</h1>
+    </header>
+
+    <div style="font-size: 1.2rem; line-height: 1.7; color: var(--text-main);">
+        <p>This work explores the monumental artifacts of New England&rsquo;s functional history. From mines to mills, forts to foundation holes, quarries to logging camps—I photograph these sites in their present state. They exist on a spectrum of transformation and use, from abandonment to preservation.</p>
+<p>New England is my home. These are places I find following old maps, hiking familiar trails, and driving back roads. I grew up learning to read the stories this region can tell—seeing the mill race in the stream bend, the drill marks on split granite blocks, the industrial heritage of an apartment complex.</p>
+<p>My work is not comprehensive or documentary. I photograph what catches my attention in the landscape I call home. If these images make someone else curious about the boom chain by the lake or the foundation stones in their woods—if they start seeing the seams—then the work has found its audience.</p>
+
+    </div>
+
+</article>
 
 
     </main>
 
     <footer>
-        <p>&copy; 2025 My Photography</p>
+        <p>&copy; 2025 Alex Walker</p>
     </footer>
 
 </body>

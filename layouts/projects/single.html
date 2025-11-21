@@ -1,0 +1,298 @@
+{{ define "main" }}
+
+<style>
+    /* THE RESET */
+    :root { --sidebar-width: 350px; }
+    
+    body {
+        margin: 0 !important; padding: 0 !important;
+        overflow: hidden; height: 100vh; width: 100vw;
+        padding-bottom: 20px !important; box-sizing: border-box;
+        background-color: var(--bg-dark); /* Ensure background matches */
+    }
+
+    /* CONTAINER */
+    .project-container {
+        display: grid;
+        grid-template-columns: var(--sidebar-width) 1fr;
+        height: calc(100vh - 160px); 
+        width: 100%; 
+        background: var(--bg-dark);
+        border-top: 1px solid var(--border);
+    }
+
+    /* SIDEBAR (Text) */
+    .sidebar {
+        position: relative;
+
+        padding: 2rem;
+        border-right: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: var(--bg-panel); /* Slightly lighter than main bg */
+        overflow-y: auto;
+        color: var(--text-main);
+    }
+
+    /* STAGE (Image + Title Area) */
+    .stage {
+        background: var(--bg-stage);
+        position: relative;
+        min-width: 0; min-height: 0;
+        width: 100%; height: 100%;
+        
+        /* FLEX COLUMN: Stacks Image on top of Text */
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center;
+        
+        /* REDUCED PADDING: Gives the image more screen real estate */
+        padding: 20px; 
+        box-sizing: border-box;
+    }
+
+    /* IMAGE */
+    .slide {
+        display: none;
+        /* Flex magic: Grow to fill space, but shrink if needed */
+        flex: 1; 
+        min-height: 0; /* Crucial for flex containers */
+        
+        max-width: 100%; 
+        width: auto; 
+        object-fit: contain;
+        
+        box-shadow: 0 0 30px rgba(0,0,0,0.5); 
+    }
+
+    .slide.active { display: block; }
+
+    /* BUTTONS */
+    .nav-buttons { margin-top: 2rem; display: flex; gap: 1rem; }
+    
+    button {
+        cursor: pointer;
+        background: transparent;
+        color: var(--text-main);
+        border: 1px solid var(--text-muted); /* Outline style */
+        padding: 12px 24px;
+        font-family: 'Bitter', serif;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        transition: all 0.2s;
+    }
+
+    button:hover { 
+        background: var(--text-main); 
+        color: var(--bg-dark); 
+        border-color: var(--text-main);
+    }
+
+    .counter-display {
+        font-family: monospace;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        letter-spacing: 0.1em;
+        flex-grow: 1; 
+        text-align: center;
+    }
+
+    .caption-display { 
+        margin-top: 1rem; 
+        font-size: 0.9rem; 
+        color: var(--text-muted); 
+        font-style: italic; 
+        min-height: 1.2em; 
+    }
+
+    /* THE NEW CAPTION SLOT (Under the image) */
+    .stage-caption {
+        margin-top: 15px;
+        color: var(--text-muted);
+        font-family: 'Bitter', serif;
+        font-size: 0.9rem;
+        text-align: center;
+        flex-shrink: 0; /* Don't let the image crush the text */
+        min-height: 1.5em;
+    }
+
+    /* HIDDEN SIDEBAR MODE */
+    .project-container.full-mode {
+        grid-template-columns: 0px 1fr; /* Crush sidebar to 0 */
+    }
+    
+    .project-container.full-mode .sidebar {
+        padding: 0; /* Hide padding so it vanishes completely */
+        overflow: hidden;
+    }
+
+    /* TOGGLE BUTTONS */
+    .toggle-btn {
+        background: transparent;
+        border: none;
+        color: var(--text-muted);
+        cursor: pointer;
+        font-size: 1.2rem;
+        padding: 5px;
+        transition: color 0.2s;
+    }
+    
+    /* The "Close" button inside the sidebar */
+    .close-sidebar {
+        position: absolute;
+        top: 15px;
+        right: 15px; /* Puts it in the top-right corner of the sidebar */
+        z-index: 10;
+        
+        /* Optional: Make it look like a proper UI element */
+        background: rgba(0,0,0,0.2);
+        border-radius: 4px;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+    
+    .close-sidebar:hover {
+        background: var(--text-main);
+        color: var(--bg-dark);
+    }
+
+    /* The "Open" button floating on the stage (hidden by default) */
+    .open-sidebar {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 100;
+        display: none; /* Only show when sidebar is closed */
+        background: rgba(0,0,0,0.5); /* distinct background */
+        padding: 10px;
+        border-radius: 4px;
+    }
+
+    .project-container.full-mode .open-sidebar {
+        display: block;
+    }
+
+    /* MOBILE adjustments... (same as before) */
+</style>
+
+<div class="project-container">
+    
+    <aside class="sidebar">
+        <button class="toggle-btn close-sidebar" onclick="toggleSidebar()" title="Hide Sidebar">«</button>
+        <h1 style="margin: 0 0 0.5rem 0; font-size: 1.5rem;">{{ .Title }}</h1>
+        <p style="margin: 0 0 2rem 0; font-size: 0.9rem; color: #888;">{{ .Params.description }}</p>
+        
+        <div style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 2rem;">
+            {{ .Content }}
+        </div>
+
+        <div class="nav-buttons">
+            <button onclick="changeSlide(-1)">Prev</button>
+            
+            <span id="counter-target" class="counter-display">00 / 00</span>
+            
+            <button onclick="changeSlide(1)">Next</button>
+        </div>
+        
+        <p style="margin-top: 2rem;"><a href="/projects" style="color:#ccc; text-decoration: none;">&larr; Back to Projects</a></p>
+    </aside>
+
+    <main class="stage">
+        <button class="toggle-btn open-sidebar" onclick="toggleSidebar()" title="Show Info">» Info</button>
+
+        {{ range $index, $element := .Params.gallery }}
+            {{ $imageRes := $.Resources.GetMatch .image }}
+            {{ if $imageRes }}
+                {{ $final := $imageRes.Resize "2500x" }} 
+                
+                <img src="{{ $final.RelPermalink }}" 
+                     class="slide {{ if eq $index 0 }}active{{ end }}" 
+                     data-title="{{ .title }}"
+                     alt="{{ .title }}">
+            {{ end }}
+        {{ end }}
+        
+        <div id="caption-target" class="stage-caption"></div>
+    </main>
+
+</div>
+
+<script>
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const captionTarget = document.getElementById('caption-target');
+    const counterTarget = document.getElementById('counter-target');
+
+    // Helper: Turns "1" into "01"
+    function formatNumber(num) {
+        return num.toString().padStart(2, '0');
+    }
+
+    function updateUI() {
+        // 1. Update Caption
+        if(captionTarget && slides[currentIndex]) {
+            captionTarget.innerText = slides[currentIndex].getAttribute('data-title');
+        }
+        
+        // 2. Update Counter
+        if(counterTarget) {
+            const currentStr = formatNumber(currentIndex + 1);
+            const totalStr = formatNumber(slides.length);
+            counterTarget.innerText = `${currentStr} / ${totalStr}`;
+        }
+    }
+
+    // Run on load
+    if(slides.length > 0) {
+        updateUI();
+    }
+
+    function changeSlide(direction) {
+        slides[currentIndex].classList.remove('active');
+        
+        currentIndex += direction;
+
+        // Loop logic
+        if (currentIndex >= slides.length) currentIndex = 0;
+        if (currentIndex < 0) currentIndex = slides.length - 1;
+
+        slides[currentIndex].classList.add('active');
+        
+        updateUI();
+    }
+    
+    document.addEventListener('keydown', function(e) {
+        if(e.key === "ArrowRight") changeSlide(1);
+        if(e.key === "ArrowLeft") changeSlide(-1);
+    });
+
+    function toggleSidebar() {
+        const container = document.querySelector('.project-container');
+        container.classList.toggle('full-mode');
+        
+        // Optional: Trigger a resize event so the image recalculates if needed
+        window.dispatchEvent(new Event('resize'));
+    }
+</script>
+
+<article style="max-width: 800px; margin: 0 auto; padding: 80px 20px;">
+    
+    <header style="margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 30px;">
+        <h1 style="font-size: 3rem; line-height: 1.1; margin-bottom: 10px;">{{ .Title }}</h1>
+    </header>
+
+    <div style="font-size: 1.2rem; line-height: 1.7; color: var(--text-main);">
+        {{ .Content }}
+    </div>
+
+</article>
+
+{{ end }}

@@ -1,48 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ .Title }}</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
     <style>
+        /* 2. DEFINE THE PALETTE */
+        :root {
+            /* The "Tinge of Blue" Dark Greys */
+            --bg-dark: #0f1216;       /* Very deep, almost black blue */
+            --bg-panel: #161b22;      /* Slightly lighter for sidebars */
+            --bg-stage: #0a0c0f;      /* The darkest shade for behind images */
+            
+            /* Text Colors */
+            --text-main: #e6edf3;     /* Off-white, cool tone */
+            --text-muted: #8b949e;    /* Muted grey-blue */
+            
+            /* The "Not Tacky" Accent */
+            --accent: #3fb950;        /* A subdued industrial green? Or Cyan? */
+            --accent-blue: #2f81f7;   /* A solid, workwear blue */
+            
+            --border: #30363d;        /* Subtle borders */
+        }
+
         body { 
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+            font-family: 'Bitter', serif; /* The Heavy Serif */
             margin: 0; 
-            color: #333;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
         }
         
-        /* 1. Give the Navigation breathing room */
+        /* Navigation Styling */
         nav { 
-            padding: 1.5rem 2.5rem; /* Top/Bottom 1.5rem, Left/Right 2.5rem */
-            border-bottom: 1px solid #f0f0f0; 
+            padding: 1.5rem 2.5rem;
+            border-bottom: 1px solid var(--border); 
             display: flex;
-            gap: 20px;
+            gap: 30px;
+            background-color: var(--bg-dark);
         }
         
         nav a {
             text-decoration: none;
-            color: #000;
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            font-size: 0.85rem;
+            font-weight: 700; /* Bold navigation */
+            transition: color 0.2s;
         }
 
-        nav a:hover { color: #888; }
-
-        /* 2. Give the Footer breathing room */
+        nav a:hover { color: var(--text-main); }
+        
+        /* Footer Styling */
         footer {
             padding: 1.5rem 2.5rem;
-            font-size: 0.75rem;
-            color: #999;
-            border-top: 1px solid #f0f0f0;
-            text-align: right; /* Put copyright in corner */
+            font-size: 0.8rem;
+            color: var(--border); /* Very subtle */
+            border-top: 1px solid var(--border);
+            text-align: right;
+            background-color: var(--bg-dark);
         }
+
+        /* Make sure links in the content pop slightly */
+        a { color: var(--text-main); }
     </style>
 </head>
 <body>
     
     <nav>
-        <a href="/" style="font-weight: bold;">My Photography</a>
+        <a href="/" style="color: var(--text-main);">Alex Walker</a>
         <a href="/projects">Projects</a>
+        <a href="/about">About</a>
     </nav>
 
     <main>
@@ -50,7 +84,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 My Photography</p>
+        <p>&copy; {{ now.Year }} Alex Walker</p>
     </footer>
 
 </body>

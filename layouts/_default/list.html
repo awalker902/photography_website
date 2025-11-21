@@ -1,12 +1,82 @@
 {{ define "main" }}
-    <h1>{{ .Title }}</h1>
-    <ul>
-        {{ range .Pages }}
-            <li>
-                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                <br>
-                <small>{{ .Params.description }}</small>
-            </li>
-        {{ end }}
-    </ul>
+
+<style>
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 40px;
+        max-width: 1200px;
+        margin: 60px auto;
+        padding: 0 40px;
+    }
+
+    .project-card {
+        text-decoration: none;
+        display: block;
+    }
+
+    .project-card:hover .card-image {
+        opacity: 0.8; /* Fade slightly on hover */
+        transform: scale(1.02);
+    }
+
+    .card-image-box {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        background: var(--bg-panel); /* Dark placeholder */
+        margin-bottom: 20px;
+        border: 1px solid var(--border); /* Thin crisp border */
+    }
+
+    .card-image {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        transition: all 0.4s ease;
+    }
+
+    .card-title {
+        font-size: 1.4rem;
+        margin: 0 0 8px 0;
+        color: var(--text-main);
+        font-weight: 700; /* Thick serif */
+    }
+    
+    .card-meta {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        font-family: sans-serif; /* Contrast font for metadata? or stick to Serif? */
+        letter-spacing: 0.05em;
+    }
+</style>
+
+<div style="text-align: center; margin-top: 80px; margin-bottom: 40px;">
+    <h1 style="font-size: 3rem; margin-bottom: 10px;">{{ .Title }}</h1>
+    <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">
+        {{ .Params.description }}
+    </p>
+</div>
+
+<div class="project-grid">
+    {{ range .Pages }}
+        <a href="{{ .RelPermalink }}" class="project-card">
+            <div class="card-image-box">
+                {{ if .Params.gallery }}
+                    {{ $coverItem := index .Params.gallery 0 }}
+                    {{ $coverImg := .Resources.GetMatch $coverItem.image }}
+                    {{ if $coverImg }}
+                        {{ $thumb := $coverImg.Resize "600x" }}
+                        <img src="{{ $thumb.RelPermalink }}" class="card-image" alt="{{ .Title }}">
+                    {{ end }}
+                {{ else }}
+                    <div style="display:flex; height:100%; align-items:center; justify-content:center; color:var(--border);">
+                        No Image
+                    </div>
+                {{ end }}
+            </div>
+            <h2 class="card-title">{{ .Title }}</h2>
+            <div class="card-meta">{{ .Params.description }}</div>
+        </a>
+    {{ end }}
+</div>
+
 {{ end }}
