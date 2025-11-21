@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ .Title }}</title>
+    <style>
+        body { 
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+            margin: 0; 
+            color: #333;
+        }
+        
+        /* 1. Give the Navigation breathing room */
+        nav { 
+            padding: 1.5rem 2.5rem; /* Top/Bottom 1.5rem, Left/Right 2.5rem */
+            border-bottom: 1px solid #f0f0f0; 
+            display: flex;
+            gap: 20px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.8rem;
+        }
+
+        nav a:hover { color: #888; }
+
+        /* 2. Give the Footer breathing room */
+        footer {
+            padding: 1.5rem 2.5rem;
+            font-size: 0.75rem;
+            color: #999;
+            border-top: 1px solid #f0f0f0;
+            text-align: right; /* Put copyright in corner */
+        }
+    </style>
+</head>
+<body>
+    
+    <nav>
+        <a href="/" style="font-weight: bold;">My Photography</a>
+        <a href="/projects">Projects</a>
+    </nav>
+
+    <main>
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My Photography</p>
+    </footer>
+
+</body>
+</html>

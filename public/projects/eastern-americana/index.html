@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <title>Eastern Americana</title>
+    <style>
+        body { 
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+            margin: 0; 
+            color: #333;
+        }
+        
+         
+        nav { 
+            padding: 1.5rem 2.5rem;  
+            border-bottom: 1px solid #f0f0f0; 
+            display: flex;
+            gap: 20px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.8rem;
+        }
+
+        nav a:hover { color: #888; }
+
+         
+        footer {
+            padding: 1.5rem 2.5rem;
+            font-size: 0.75rem;
+            color: #999;
+            border-top: 1px solid #f0f0f0;
+            text-align: right;  
+        }
+    </style>
+</head>
+<body>
+    
+    <nav>
+        <a href="/" style="font-weight: bold;">My Photography</a>
+        <a href="/projects">Projects</a>
+    </nav>
+
+    <main>
+        
+
+<style>
+     
+     
+    :root {
+        --sidebar-width: 350px;
+    }
+
+    body {
+        margin: 0 !important;  
+        padding: 0 !important;
+        overflow: hidden;  
+        height: 100vh;
+        width: 100vw;
+    }
+
+     
+    .project-container {
+        display: grid;
+        grid-template-columns: var(--sidebar-width) 1fr;
+        
+         
+        height: calc(100vh - 160px); 
+        
+        width: 100%; 
+        background: white;
+    }
+
+     
+    .sidebar {
+        padding: 2rem;
+        border-right: 1px solid #eee;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: #fff;
+        overflow-y: auto;
+        box-sizing: border-box;  
+    }
+
+     
+    .stage {
+        background: #f0f0f0;  
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;  
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;  
+        box-sizing: border-box;
+    }
+
+     
+    .slide {
+        display: none;
+        
+         
+         
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        
+        object-fit: contain;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    }
+
+    .slide.active {
+        display: block;
+    }
+
+     
+    .nav-buttons { margin-top: 2rem; display: flex; gap: 1rem; }
+    button { cursor: pointer; background: black; color: white; border: none; padding: 10px 20px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+    button:hover { opacity: 0.8; }
+    .caption-display { margin-top: 1rem; font-size: 0.85rem; color: #666; font-style: italic; min-height: 1.2em; }
+
+    @media (max-width: 768px) {
+        .project-container { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+        .sidebar { height: auto; padding: 1rem; border-bottom: 1px solid #eee; border-right: none; }
+         
+        .stage { height: 50vh; padding: 10px; } 
+    }
+</style>
+
+<div class="project-container">
+    
+    <aside class="sidebar">
+        <h1 style="margin: 0 0 0.5rem 0; font-size: 1.5rem;">Eastern Americana</h1>
+        <p style="margin: 0 0 2rem 0; font-size: 0.9rem; color: #888;">Exploring the monumental artifacts of New England&#39;s functional history.</p>
+        
+        <div style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 2rem;">
+            <p>This work explores the monumental artifacts of New England&rsquo;s functional history. From mines to mills, forts to foundation holes, quarries to logging camps—I photograph these sites in their present state. They exist on a spectrum of transformation and use, from abandonment to preservation.</p>
+<p>New England is my home. These are places I find following old maps, hiking familiar trails, and driving back roads. I grew up learning to read the stories this region can tell—seeing the mill race in the stream bend, the drill marks on split granite blocks, the industrial heritage of an apartment complex.</p>
+<p>My work is not comprehensive or documentary. I photograph what catches my attention in the landscape I call home. If these images make someone else curious about the boom chain by the lake or the foundation stones in their woods—if they start seeing the seams—then the work has found its audience.</p>
+
+        </div>
+
+        <div id="caption-target" class="caption-display">
+            </div>
+
+        <div class="nav-buttons">
+            <button onclick="changeSlide(-1)">Prev</button>
+            <button onclick="changeSlide(1)">Next</button>
+        </div>
+        
+        <p style="margin-top: 2rem;"><a href="/projects" style="color:#ccc; text-decoration: none;">&larr; Back to Projects</a></p>
+    </aside>
+
+    <main class="stage">
+        
+            
+            
+            
+                
+                 
+                
+                <img src="/projects/eastern-americana/DSC04072-Edit_hu_4490ee162c27e5b1.jpg" 
+                     class="slide active" 
+                     data-title="Factories, Dam, Substation | Bellows Falls, VT"
+                     alt="Factories, Dam, Substation | Bellows Falls, VT">
+            
+
+        
+            
+            
+            
+                
+                 
+                
+                <img src="/projects/eastern-americana/DSC05093-Edit_hu_d21cbab4aec89d4c.jpg" 
+                     class="slide " 
+                     data-title="North Concord Radar Station | East Mountain, VT"
+                     alt="North Concord Radar Station | East Mountain, VT">
+            
+
+        
+            
+            
+            
+                
+                 
+                
+                <img src="/projects/eastern-americana/F100_Mar25_1_hu_69a792fa61b51b1a.jpg" 
+                     class="slide " 
+                     data-title="Power Station | Bellows Falls, VT"
+                     alt="Power Station | Bellows Falls, VT">
+            
+
+        
+            
+            
+            
+                
+                 
+                
+                <img src="/projects/eastern-americana/TMX57_Sep24_11-positive-Edit_hu_bd9b31287222fa35.jpg" 
+                     class="slide " 
+                     data-title="Boom Chain | Lake Umbagog, NH"
+                     alt="Boom Chain | Lake Umbagog, NH">
+            
+
+        
+            
+            
+            
+                
+                 
+                
+                <img src="/projects/eastern-americana/TMX57_Yuhas25_3-Edit_hu_bc7078ea82dafe45.jpg" 
+                     class="slide " 
+                     data-title="#2 Yuhas Feldspar Mine | Acworth, NH"
+                     alt="#2 Yuhas Feldspar Mine | Acworth, NH">
+            
+
+        
+            
+            
+            
+                
+                 
+                
+                <img src="/projects/eastern-americana/F10057_4-Edit_hu_5fd8e164470733d9.jpg" 
+                     class="slide " 
+                     data-title="Factory with High Tension Lines | Bellows Falls, VT"
+                     alt="Factory with High Tension Lines | Bellows Falls, VT">
+            
+
+        
+            
+            
+            
+                
+                 
+                
+                <img src="/projects/eastern-americana/F10057_1_hu_874b05c9e79e28c8.jpg" 
+                     class="slide " 
+                     data-title="Mill Foundation | Thornton Gore, NH"
+                     alt="Mill Foundation | Thornton Gore, NH">
+            
+
+        
+    </main>
+
+</div>
+
+<script>
+    let currentIndex = 0;
+    
+    const slides = document.querySelectorAll('.slide');
+    const captionTarget = document.getElementById('caption-target');
+
+    
+    if(slides.length > 0) {
+        captionTarget.innerText = slides[0].getAttribute('data-title');
+    }
+
+    function changeSlide(direction) {
+        
+        slides[currentIndex].classList.remove('active');
+
+        
+        currentIndex += direction;
+
+        
+        if (currentIndex >= slides.length) currentIndex = 0;
+        if (currentIndex < 0) currentIndex = slides.length - 1;
+
+        
+        slides[currentIndex].classList.add('active');
+        
+        
+        captionTarget.innerText = slides[currentIndex].getAttribute('data-title');
+    }
+    
+    
+    document.addEventListener('keydown', function(e) {
+        if(e.key === "ArrowRight") changeSlide(1);
+        if(e.key === "ArrowLeft") changeSlide(-1);
+    });
+</script>
+
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My Photography</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on My New Hugo Site</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content in Home on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 21 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Eastern Americana</title>
+      <link>http://localhost:1313/projects/eastern-americana/</link>
+      <pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/eastern-americana/</guid>
+      <description>&lt;p&gt;This work explores the monumental artifacts of New England&amp;rsquo;s functional history. From mines to mills, forts to foundation holes, quarries to logging camps—I photograph these sites in their present state. They exist on a spectrum of transformation and use, from abandonment to preservation.&lt;/p&gt;&#xA;&lt;p&gt;New England is my home. These are places I find following old maps, hiking familiar trails, and driving back roads. I grew up learning to read the stories this region can tell—seeing the mill race in the stream bend, the drill marks on split granite blocks, the industrial heritage of an apartment complex.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
