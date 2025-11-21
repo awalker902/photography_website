@@ -180,6 +180,45 @@
         display: block;
     }
 
+    /* FLOATING NAV ARROWS */
+    .stage-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.3); /* Subtle dark backing */
+        color: white;
+        border: none;
+        font-size: 2rem;
+        padding: 15px;
+        cursor: pointer;
+        z-index: 90;
+        border-radius: 50%; /* Circular hit targets */
+        width: 60px; height: 60px;
+        display: flex; align-items: center; justify-content: center;
+        
+        opacity: 0; /* Hidden by default so they don't clutter the art */
+        transition: opacity 0.3s, background 0.3s;
+    }
+
+    /* Show them when hovering over the stage */
+    .stage:hover .stage-nav {
+        opacity: 1;
+    }
+
+    /* On Mobile, always show them slightly so user knows they can tap? 
+       Actually, swipe is better. Let's keep them subtle. */
+    @media (max-width: 768px) {
+        .stage-nav { display: none; } /* Hide arrows on mobile, rely on SWIPE */
+    }
+
+    .stage-nav:hover {
+        background: var(--text-main);
+        color: var(--bg-dark);
+    }
+
+    .stage-nav.prev { left: 20px; }
+    .stage-nav.next { right: 20px; }
+
     /* MOBILE adjustments... (same as before) */
 </style>
 
@@ -207,6 +246,9 @@
 
     <main class="stage">
         <button class="toggle-btn open-sidebar" onclick="toggleSidebar()" title="Show Info">» Info</button>
+
+        <button class="stage-nav prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="stage-nav next" onclick="changeSlide(1)">&#10095;</button>
 
         {{ range $index, $element := .Params.gallery }}
             {{ $imageRes := $.Resources.GetMatch .image }}
@@ -281,6 +323,39 @@
         // Optional: Trigger a resize event so the image recalculates if needed
         window.dispatchEvent(new Event('resize'));
     }
+
+    // --- SWIPE SUPPORT ---
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const stage = document.querySelector('.stage');
+
+    stage.addEventListener('touchstart', function(e) {
+        // Record where the finger landed
+        touchStartX = e.changedTouches[0].screenX;
+    }, {passive: true});
+
+    stage.addEventListener('touchend', function(e) {
+        // Record where the finger lifted
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, {passive: true});
+
+    function handleSwipe() {
+        // Calculate difference
+        const threshold = 50; // Minimum distance to count as a swipe
+        const diff = touchEndX - touchStartX;
+
+        if (Math.abs(diff) > threshold) {
+            if (diff < 0) {
+                // Swiped Left -> Go Next
+                changeSlide(1);
+            } else {
+                // Swiped Right -> Go Prev
+                changeSlide(-1);
+            }
+        }
+    }
+    
 </script>
 
 <article style="max-width: 800px; margin: 0 auto; padding: 80px 20px;">

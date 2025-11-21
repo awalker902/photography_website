@@ -263,6 +263,44 @@
     }
 
      
+    .stage-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.3);  
+        color: white;
+        border: none;
+        font-size: 2rem;
+        padding: 15px;
+        cursor: pointer;
+        z-index: 90;
+        border-radius: 50%;  
+        width: 60px; height: 60px;
+        display: flex; align-items: center; justify-content: center;
+        
+        opacity: 0;  
+        transition: opacity 0.3s, background 0.3s;
+    }
+
+     
+    .stage:hover .stage-nav {
+        opacity: 1;
+    }
+
+     
+    @media (max-width: 768px) {
+        .stage-nav { display: none; }  
+    }
+
+    .stage-nav:hover {
+        background: var(--text-main);
+        color: var(--bg-dark);
+    }
+
+    .stage-nav.prev { left: 20px; }
+    .stage-nav.next { right: 20px; }
+
+     
 </style>
 
 <div class="project-container">
@@ -292,6 +330,9 @@
 
     <main class="stage">
         <button class="toggle-btn open-sidebar" onclick="toggleSidebar()" title="Show Info">» Info</button>
+
+        <button class="stage-nav prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="stage-nav next" onclick="changeSlide(1)">&#10095;</button>
 
         
             
@@ -576,6 +617,39 @@
         
         window.dispatchEvent(new Event('resize'));
     }
+
+    
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const stage = document.querySelector('.stage');
+
+    stage.addEventListener('touchstart', function(e) {
+        
+        touchStartX = e.changedTouches[0].screenX;
+    }, {passive: true});
+
+    stage.addEventListener('touchend', function(e) {
+        
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, {passive: true});
+
+    function handleSwipe() {
+        
+        const threshold = 50; 
+        const diff = touchEndX - touchStartX;
+
+        if (Math.abs(diff) > threshold) {
+            if (diff < 0) {
+                
+                changeSlide(1);
+            } else {
+                
+                changeSlide(-1);
+            }
+        }
+    }
+    
 </script>
 
 <article style="max-width: 800px; margin: 0 auto; padding: 80px 20px;">
