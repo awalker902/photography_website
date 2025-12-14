@@ -74,4 +74,4 @@ gallery:
 
 This work explores the monumental artifacts of New England's human history. I am fascinated by the legacy of those who came before us, and the marks they left on our landscape.
 
-By understanding our past, we can better direct our future. By learning to read the stories written across the land—seeing where our ancestors persisted, failed, lived, and died—we give ourselves the tools to make informed, empathetic decisions about our own impact on this place we call home.
+By understanding our past, we can better direct our future. By learning to read the stories written by these artifacts—seeing where our ancestors persisted, failed, lived, and died—we give ourselves the tools to make informed, empathetic decisions about our own impact on the landscape.
