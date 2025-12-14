@@ -1,7 +1,7 @@
 ---
 title: "Maritime"
 date: 2025-11-21
-description: "A collection of work from near and upon the ocean."
+description: "A collection of work from on and around the water."
 
 gallery:
   - image: "aaAF10057_3-positive-Edit.jpg"
