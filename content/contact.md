@@ -60,7 +60,7 @@ title: "Contact"
 </style>
 
 <div class="contact-text">
-    <p>For print inquiries or commissions, please use the form below.</p>
+    <p>To reach me, please shoot me an email using the form below:</p>
 </div>
 
 <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
