@@ -72,8 +72,6 @@ gallery:
     title: "Yuhas #2 Feldspar Mine | Acworth, NH"
 ---
 
-This work explores the monumental artifacts of New England's functional history. From mines to mills, forts to foundation holes, quarries to logging camps—I photograph these sites in their present state. They exist on a spectrum of transformation and use, from abandonment to preservation.
+This work explores the monumental artifacts of New England's human history. I am fascinated by the legacy of those who came before us, and the marks they left on our landscape.
 
-New England is my home. These are places I find following old maps, hiking familiar trails, and driving back roads. I grew up learning to read the stories this region can tell—seeing the mill race in the stream bend, the drill marks on split granite blocks, the industrial heritage of an apartment complex.
-
-My work is not comprehensive or documentary. I photograph what catches my attention in the landscape I call home. If these images make someone else curious about the boom chain by the lake or the foundation stones in their woods—if they start seeing the seams—then the work has found its audience.
+By understanding our past, we can better direct our future. By learning to read the stories written across the land—seeing where our ancestors persisted, failed, lived, and died—we give ourselves the tools to make informed, empathetic decisions about our own impact on this place we call home.
