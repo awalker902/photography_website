@@ -3,7 +3,7 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>About the Photographer</title>
+    <title>Contact</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,27 +75,87 @@
 <article style="max-width: 800px; margin: 0 auto; padding: 80px 20px;">
     
     <header style="margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 30px;">
-        <h1 style="font-size: 3rem; line-height: 1.1; margin-bottom: 10px;">About the Photographer</h1>
+        <h1 style="font-size: 3rem; line-height: 1.1; margin-bottom: 10px;">Contact</h1>
     </header>
 
     <div style="font-size: 1.2rem; line-height: 1.7; color: var(--text-main);">
-        <p><img src="/portrait.jpg" 
-alt="Alex Walker" 
-style="float: left; width: 300px; margin-right: 40px; margin-bottom: 20px; border: 1px solid var(--border);"></p>
-<p style="margin-top: 0;">
-   I'm a photographer and naval architect based in New Hampshire. I've lived in New England my whole life - from Connecticut to Maine.
-</p>
-<p>
-    My primary work, Eastern Americana, documents the functional remnants scattered across the New England landscape. I grew up learning to read these traces and now spend my time following old maps to forgotten sites, photographing what remains.
-</p>
-<p>
-    On the water, I race aboard Wild Blue, a J/122 out of Portland, ME, and photograph the maritime world - yacht racing, working waterfronts, commercial shipping.
-</p>
-<p>
-    I work across multiple formats and print traditional processes in my darkroom. In 2022, I founded <a href="https://www.instagram.com/newenglandanalog" target="_blank" style="color: var(--text-main); text-decoration: underline;">New England Analog</a>, a community for film photographers in the Northeast.
-</p>
-<br style="clear: both;">
+        <style>
+    /* Darkroom Form Styling */
+    .contact-form {
+        max-width: 500px;
+        margin-top: 40px;
+    }
 
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 12px;
+        background-color: var(--bg-panel); /* Dark Grey */
+        border: 1px solid var(--border);
+        color: var(--text-main);
+        font-family: 'Bitter', serif; /* Matching your site font */
+        font-size: 1rem;
+        box-sizing: border-box;
+        transition: border-color 0.2s;
+    }
+
+    input:focus, textarea:focus {
+        outline: none;
+        border-color: var(--text-main); /* Light up on focus */
+    }
+
+    button[type="submit"] {
+        background-color: transparent;
+        color: var(--text-main);
+        border: 1px solid var(--text-main);
+        padding: 12px 30px;
+        font-family: 'Bitter', serif;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    button[type="submit"]:hover {
+        background-color: var(--text-main);
+        color: var(--bg-dark);
+    }
+</style>
+<div class="contact-text">
+    <p>For print inquiries or commissions, please use the form below.</p>
+</div>
+<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+<p style="display:none">
+    <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+</p>
+<div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required />
+</div>
+<div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required />
+</div>
+<div class="form-group">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="6" required></textarea>
+</div>
+<p><button type="submit">Send Message</button></p>
+</form>
     </div>
 
 </article>
