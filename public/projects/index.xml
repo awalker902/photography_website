@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Projects and Collections on My New Hugo Site</title>
-    <link>http://localhost:1313/projects/</link>
-    <description>Recent content in Projects and Collections on My New Hugo Site</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 21 Nov 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/projects/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Eastern Americana</title>
-      <link>http://localhost:1313/projects/eastern-americana/</link>
-      <pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/eastern-americana/</guid>
-      <description>&lt;p&gt;This work explores the monumental artifacts of New England&amp;rsquo;s human history. I am fascinated by the legacy of those who came before us, and the marks they left on our landscape.&lt;/p&gt;&#xA;&lt;p&gt;By understanding our past, we can better direct our future. By learning to read the stories written by these artifacts—seeing where our ancestors persisted, failed, lived, and died—we give ourselves the tools to make informed, empathetic decisions about our own impact on the landscape.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Maritime</title>
-      <link>http://localhost:1313/projects/maritime-work/</link>
-      <pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/maritime-work/</guid>
-      <description></description>
-    </item>
-  </channel>
+	<channel>
+		<title>Projects and Collections on My New Hugo Site</title>
+		<link>http://localhost:1313/projects/</link>
+		<description>Recent content in Projects and Collections on My New Hugo Site</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 21 Nov 2025 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/projects/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Eastern Americana</title>
+				<link>http://localhost:1313/projects/eastern-americana/</link>
+				<pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/projects/eastern-americana/</guid>
+				<description>&lt;p&gt;This work explores the monumental artifacts of New England&amp;rsquo;s human history. I am fascinated by the legacy of those who came before us, and the marks they left on our landscape.&lt;/p&gt;&#xA;&lt;p&gt;By understanding our past, we can better direct our future. By learning to read the stories written by these artifacts—seeing where our ancestors persisted, failed, lived, and died—we give ourselves the tools to make informed, empathetic decisions about our own impact on the landscape.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Maritime</title>
+				<link>http://localhost:1313/projects/maritime-work/</link>
+				<pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/projects/maritime-work/</guid>
+				<description></description>
+			</item>
+	</channel>
 </rss>
