@@ -72,6 +72,8 @@ gallery:
     title: "Yuhas #2 Feldspar Mine | Acworth, NH"
 ---
 
-This work explores the monumental artifacts of New England's human history. I am fascinated by the legacy of those who came before us, and the marks they left on our landscape.
+This work explores monumental artifacts of New England's history. I am fascinated by the legacy of those who came before us, and the marks they left on our landscape.
 
-By understanding our past, we can better direct our future. By learning to read the stories written by these artifacts—seeing where our ancestors persisted, failed, lived, and died—we give ourselves the tools to make informed, empathetic decisions about our own impact on the landscape.
+New England does not contain untouched wilderness. Areas free from human influence do not exist. I believe that photographs of my home should reflect its history and its humanity, so in my work I seek out places where history is evident.
+
+My objective is to examine the contemporary landscape with an empathetic eye. I hope that this perspective will allow me to better understand the decision-making processes that shaped the landscape we see today.
